@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Class Authentication.
+ * Class encrypt/decrypt text.
+ * 
  * @package    Encrypt / Decrypt
  * @author     Francisco Caravana <fcaravana@gmail.com>
  * @copyright  Francisco Caravana
