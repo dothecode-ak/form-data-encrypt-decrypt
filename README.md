@@ -1,5 +1,7 @@
 # encrypt-decrypt
 
+This is a example how you can encrypt a html form data and decrypt with php to have some kind of data security. 
+
 **Generate RSA keys with phpGenerateKeys.php**
 
 The phpGenerateKeys.php is a example how the RSA public and private keys can be generated with a passphrase.
