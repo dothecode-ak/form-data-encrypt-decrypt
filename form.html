@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-Type" content="text/html; CHARSET=utf-8" />
+    <meta name="description" content="">
+    <meta name="author" content="Francisco Caravana [fcaravana@gmail.com]">
+    <title>Ajax Encrpt Data</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="lib/jquery/jquery-1.10.2.min.js"></script>
+
+    <script src="lib/rsa/jsbn.min.js"></script>
+    <script src="lib/rsa/rsa.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var rsaPublicKey = "-----BEGIN PUBLIC KEY-----MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALphmWV0fY4KNQLNqNLVxImey3b11PNzr4x+EhsNSfDNVxBxfQ1EF3X6Q+Eki8zEEdL6noukArV7gVW2sncv5UUCAwEAAQ==-----END PUBLIC KEY-----";
+
+            $("#form").submit(function() {
+                $("input[name='name_encrypt']").val(RSA.encrypt($("input[name='name']").val(), RSA.getPublicKey(rsaPublicKey)));
+                $("input[name='email_encrypt']").val(RSA.encrypt($("input[name='email']").val(), RSA.getPublicKey(rsaPublicKey)));
+                url = 'webservices.php';
+                $('#form').attr('action', url);
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <form id="form" action="javascript: void(0);" method="post">
+        Name: <input type="text" name="name" value="" /><br /> Email: <input type="email" name="email" value="" /><br /><br />
+
+        <input type="hidden" name="name_encrypt" />
+        <input type="hidden" name="email_encrypt" />
+
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+
+</html>

@@ -2,9 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-
 require_once("class/Encrypt.php");
-
 define("RSA_PUBLIC_KEY", "-----BEGIN PUBLIC KEY-----
 MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALphmWV0fY4KNQLNqNLVxImey3b11PNz
 r4x+EhsNSfDNVxBxfQ1EF3X6Q+Eki8zEEdL6noukArV7gVW2sncv5UUCAwEAAQ==
@@ -24,16 +22,12 @@ zydwNC0w0S0TpZEftEdKgJApZ3gfV5Lzza+F6gIuG2w=
 -----END RSA PRIVATE KEY-----");
 
 define("RSA_PASSPHRASE_KEY", "password");
-
 $encrypt = new Encrypt(array("type" => "rsa"));
 
-$firstNameDecrypt = $encrypt->transformString($_REQUEST["first_name_encrypt"]);
-$lastNameDecrypt = $encrypt->transformString($_REQUEST["last_name_encrypt"]);
-
-echo "== first name and last name crypted ==";
-var_dump($_REQUEST["first_name_encrypt"], $_REQUEST["last_name_encrypt"]);
-
-echo "== first name and last name decrypted ==";
-var_dump($firstNameDecrypt, $lastNameDecrypt);
+$name = $encrypt->transformString($_REQUEST["name_encrypt"]);
+$email = $encrypt->transformString($_REQUEST["email_encrypt"]);
+echo " decrypted data";
+var_dump($_REQUEST["name_encrypt"], $_REQUEST["email_encrypt"]);
+var_dump($name, $email);
 
 ?>
